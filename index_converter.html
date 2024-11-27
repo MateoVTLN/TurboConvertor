@@ -1,140 +1,16 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Online Audio Converter | Convert your audio files to the suitable format</title>
-    
-<div id="head">
-    <meta name="description" content="Convert your audio files to MP3, WAV, FLAC, OGG and more for free online. Change the number of channels, sample rate, bit rate, and more.">
-
-    <meta name="language" content="english">
-
-    <link rel="icon" href="favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind:400,600">
-    <link rel="stylesheet" href="/css/styles.css?v=2.98">
-
-    <link rel="stylesheet" href="css/font-awesome-5.3.1-web/css/fontawesome.css?v=1.2">
-    <link rel="stylesheet" href="css/font-awesome-5.3.1-web/css/solid.css?v=1.2">
-
-    <span style="float: left; width: 6px; height: 57px; background-color: #f76363">&nbsp</span>
-    <span style="float: left; margin-left: 300px; margin-top: -30px;">Convert your audio file to the suitable format : .wav, 16 bits, 44.1 kHz</span>
-    <span style="float: right; margin-right: 200px; margin-top: -40px;"><a href="/faq.php">FAQ</a></span>
-    <span style="float: right; margin-right: 75px; margin-top: -40px;"><a href="/support.php">Support</a></span>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudioBuffer to WAV </title>
 </head>
 <body>
+    <h1>Convert AudioBuffer to WAV</h1>
 
-
-<div id="converter">
-
-<div id="filedropzone">
-  <form name="ajaxform" id="uploadForm" method="post" enctype="multipart/form-data">
-    <input type="file" id="file" name="file" style="height:200px; width:900px;">
-    <input type="hidden" id="hidden-field" value="">
-  </form>
-
-  <div style="margin-top: -125px; font-size: 18.5px;">DROP FILE HERE or CLICK TO BROWSE</div>
-</div>
-
-<div id="fileselectedzone" style="display: none;">
-  <div id="upload-progress-container" style="margin-left: auto; margin-right: auto; margin-top: 85px; display: none;">
-    <div id="upload-progress-bar"></div >
-  </div>
-  <div id="primary-feedback" style="margin-top: 5px; font-size: 18.5px;"></div>
-</div>
-
-<div id="filetypezone" style="display: block;">
-<div class="filetypebutton-group">
-  <button id="select-wav">WAV</button>
-</div>
-</div>
-
-<div id="filequalityzone" style="display: block; position: relative;">
-
-<div style="margin-top: -46px; width: 80px; position: absolute; background: #FFFFFF; margin-left: 410px;">Quality</div>
-
-<div id="qualityzoneenabled" style="display: block;">
-<div style="margin-top: 16px; position: absolute; margin-left: 50px;">
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot"></span>
-  <span class="dot-last"></span>
-</div>
-
-<div class="slidecontainer" style="margin-top: -5px;">
-  <input type="range" min="1" max="4" value="3" class="slider" id="myRange">
-</div>
-<div id="qualitylabels" style="margin-top: 10px; width: 900px;">
-  <span id="q1" class="qualitylabel-first">64 kbps</span>
-  <span id="q2" class="qualitylabel">128 kbps</span>
-  <span id="q3" class="qualitylabel">256 kbps</span>
-  <span id="q4" class="qualitylabel-last">320 kbps</span>
-</div>
-</div> <!-- end #qualityzoneenabled -->
-
-<div id="qualityzonedisabled" style="margin-top: 11px; display: none;">
-Quality options are unavailable for the selected file format
-</div> <!-- end #qualityzonedisabled -->
-
-</div>
-
-
-<div id="filesettingszone" style="display: block; padding-top: 40px; padding-bottom: 80px; position: relative">
-
-<div style="margin-top: -52px; width: 160px; position: absolute; background: #FFFFFF; margin-left: 370px;">Advanced Settings</div>
-
-<div class="channelsbutton-group" style="float: left; margin-left: 60px; margin-right: 60px;">
-  <button id="select-defaultchannels" style="border-radius: 14px 0px 0px 14px; background-color: #f76363;">Default</button>
-  <button id="select-mono">Mono</button>
-  <button id="select-stereo" style="border-radius: 0px 14px 14px 0px;">Stereo</button>
-</div>
-
-<!--<div class="bitdepthbutton-group" style="float: left; margin-right: 39px;">
-  <button id="select-defaultbit" style="border-radius: 14px 0px 0px 14px; background-color: #F76363;">Default</button>
-  <button id="select-16bit">16 bit</button>
-  <button id="select-24bit" style="border-radius: 0px 14px 14px 0px;">24 bit</button>
-</div>-->
-
-<div class="sampleratebutton-group" style="float: left;">
-  <button id="select-defaultkhz" style="border-radius: 14px 0px 0px 14px; background-color: #f76363;">Default</button>
-  <button id="select-24khz">24 kHz</button>
-  <button id="select-32khz">32 kHz</button>
-  <button id="select-441khz">44.1 kHz</button>
-  <button id="select-48khz">48 kHz</button>
-  <button id="select-96khz" style="border-radius: 0px 14px 14px 0px;">96 kHz</button>
-</div>
-
-<div>
-  <span class="advancedlabel-first">Channels</span>
-  <!--<span class="advancedlabel">Bit Depth</span>-->
-  <!--<span class="advancedlabel-last">Sample Rate</span>-->
-  <span class="advancedlabel">Sample Rate</span>
-</div>
-
-</div>
-
-<div style="margin: auto; margin-top: 25px; text-align: center;">
-   <button class="my-button" id="convert-button" style="height: 55px; width: 130px; font-size: 18.5px; margin: auto;">CONVERT</button>
-</div>
-
-<div id="error-message" style="margin-top: 20px; color: red; text-align: center; font-weight: 600; font-size: 16.5px; margin-bottom: 25px;">&nbsp;</div>
-
-<div id="fileconvertzone" style="display: none;">
-  <div id="convert-progress-container" style="margin-left: auto; margin-right: auto; margin-top: 45px;">
-    <div id="convert-progress-bar"></div >
-  </div>
-  <div id="convert-feedback" style="margin-top: 5px; font-size: 16px;">Please wait...</div>
-</div>
-
-<div id="fileconvertedzone" style="display: none;">
-  <div style="position: absolute; margin-top: 7px; margin-left: 868px; font-size: 16px;"><a href="#" class="changeformat">[X]</a></div>
-  <div id="converted-feedback" style="margin-top: 30px;"></div>
-</div>
-
-<script type="text/javascript" src="js/index.js?version=3.1"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/audiobuffer-to-wav@1.0.0/index.min.js"></script>
+    <script>
+        // Your usage code will go here
+    </script>
 </body>
 </html>
